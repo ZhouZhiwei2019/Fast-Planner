@@ -50,6 +50,7 @@ int KinodynamicAstar::search(Eigen::Vector3d start_pt, Eigen::Vector3d start_v, 
   cur_node->state.tail(3) = start_v;
   cur_node->index = posToIndex(start_pt);
   cur_node->g_score = 0.0;
+  cout << "2222222222222222[kino replan]: kinodynamic search!" << endl;
 
   Eigen::VectorXd end_state(6);
   Eigen::Vector3i end_index;

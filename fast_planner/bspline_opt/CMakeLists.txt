@@ -1,6 +1,15 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(bspline_opt)
 
+# 指定C++14标准
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 查找NLopt库
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(NLOPT REQUIRED nlopt)
+
+# 查找其他依赖项
 find_package(Eigen3 REQUIRED)
 find_package(PCL 1.7 REQUIRED)
 
@@ -10,7 +19,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   visualization_msgs
   cv_bridge
-  nlopt
   plan_env
 )
 
@@ -18,22 +26,24 @@ catkin_package(
  INCLUDE_DIRS include
  LIBRARIES bspline_opt
  CATKIN_DEPENDS plan_env
-#  DEPENDS system_lib
 )
 
-include_directories( 
+include_directories(
     SYSTEM 
     include 
     ${catkin_INCLUDE_DIRS}
     ${Eigen3_INCLUDE_DIRS} 
     ${PCL_INCLUDE_DIRS}
+    ${NLOPT_INCLUDE_DIRS}
 )
 
-set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS} -O3 -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall")
 
-add_library( bspline_opt 
+add_library(bspline_opt 
     src/bspline_optimizer.cpp 
-    )
-target_link_libraries( bspline_opt
+)
+
+target_link_libraries(bspline_opt
     ${catkin_LIBRARIES} 
-    )  
+    ${NLOPT_LIBRARIES}
+)
