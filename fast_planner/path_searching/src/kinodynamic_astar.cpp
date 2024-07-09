@@ -183,6 +183,7 @@ int KinodynamicAstar::search(Eigen::Vector3d start_pt, Eigen::Vector3d start_v, 
                 // Check if in close set
                 Eigen::Vector3i pro_id   = posToIndex(pro_pos);
                 int             pro_t_id = timeToIndex(pro_t);
+                cout << "pro_t_id: " << pro_t_id << endl;
 
                 PathNodePtr pro_node = dynamic ? expanded_nodes_.find(pro_id, pro_t_id) : expanded_nodes_.find(pro_id);
                 if (pro_node != NULL && pro_node->node_state == IN_CLOSE_SET)
@@ -768,6 +769,7 @@ Eigen::Vector3i KinodynamicAstar::posToIndex(Eigen::Vector3d pt)
 int KinodynamicAstar::timeToIndex(double time)
 {
     int idx = floor((time - time_origin_) * inv_time_resolution_);
+    return idx;
 }
 
 void KinodynamicAstar::stateTransit(Eigen::Matrix<double, 6, 1>& state0, Eigen::Matrix<double, 6, 1>& state1, Eigen::Vector3d um, double tau)
