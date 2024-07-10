@@ -29,7 +29,11 @@ include_directories(
     ${PCL_INCLUDE_DIRS}
 )
 
-set(CMAKE_CXX_FLAGS "-std=c++14 ${CMAKE_CXX_FLAGS} -O3 -Wall")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_CXX_FLAGS "-std=c++14 -Wall -g")
+else()
+    set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -Wall")
+endif()
 
 add_library( path_searching 
     src/kinodynamic_astar.cpp 

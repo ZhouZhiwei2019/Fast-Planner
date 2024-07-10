@@ -178,7 +178,6 @@ int KinodynamicAstar::search(Eigen::Vector3d start_pt, Eigen::Vector3d start_v, 
                 pro_t = cur_node->time + tau;
 
                 Eigen::Vector3d pro_pos = pro_state.head(3);
-                cout << "pro_t: kinodynamic search !" << pro_t << endl;
 
                 // Check if in close set
                 Eigen::Vector3i pro_id   = posToIndex(pro_pos);
@@ -372,7 +371,6 @@ double KinodynamicAstar::estimateHeuristic(Eigen::VectorXd x1, Eigen::VectorXd x
     double c5 = w_time_;
 
     std::vector<double> ts = quartic(c5, c4, c3, c2, c1);
-    cout << "2...................[kino replan]: kinodynamic search!" << endl;
 
     double v_max = max_vel_ * 0.5;
     double t_bar = (x1.head(3) - x2.head(3)).lpNorm<Infinity>() / v_max;
