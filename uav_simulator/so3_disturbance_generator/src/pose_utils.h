@@ -1,10 +1,10 @@
 #ifndef POSE_UTILS_H
 #define POSE_UTILS_H
 
-#include <iostream>
 #include "armadillo"
+#include <iostream>
 
-#define PI 3.14159265359
+#define PI      3.14159265359
 #define NUM_INF 999999.9
 
 using namespace arma;
