@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
 SET(CMAKE_BUILD_TYPE Release) # Release, RelWithDebInfo
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
-set(ENABLE_CUDA true)
+set(ENABLE_CUDA false)
 # set(ENABLE_CUDA true)
 
 if(ENABLE_CUDA)
@@ -15,9 +15,15 @@ if(ENABLE_CUDA)
 #       -gencode arch=compute_30,code=sm_30;
 #       -gencode arch=compute_35,code=sm_35;
 #       -gencode arch=compute_50,code=sm_50;
-#       -gencode arch=compute_52,code=sm_52; 
-#       -gencode arch=compute_60,code=sm_60;
-      -gencode arch=compute_61,code=sm_61;
+        # -gencode arch=compute_52,code=sm_52; 
+        # -gencode arch=compute_60,code=sm_60;
+        # -gencode arch=compute_72,code=sm_72; 
+        # -gencode arch=compute_75,code=sm_75;
+        # -gencode arch=compute_80,code=sm_80
+        # -gencode arch=compute_86,code=sm_86
+        # -gencode arch=compute_87,code=sm_87
+        -gencode arch=compute_89,code=sm_89;
+        # -gencode arch=compute_90,code=sm_90
   ) 
 
   SET(CUDA_PROPAGATE_HOST_FLAGS OFF)

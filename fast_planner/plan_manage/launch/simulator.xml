@@ -22,7 +22,7 @@
     <param name="ObstacleShape/seed" value="-1"/>
     <param name="map/obs_num"    value="$(arg p_num)"/>
     <param name="ObstacleShape/lower_rad" value="0.5"/>
-    <param name="ObstacleShape/upper_rad" value="0.7"/>
+    <param name="ObstacleShape/upper_rad" value="0.97"/>
     <param name="ObstacleShape/lower_hei" value="0.0"/>
     <param name="ObstacleShape/upper_hei" value="3.0"/>        
 
