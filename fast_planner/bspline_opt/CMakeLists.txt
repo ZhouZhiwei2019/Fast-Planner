@@ -6,8 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 查找NLopt库
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(NLOPT REQUIRED nlopt)
+find_package(nlopt REQUIRED)
 
 # 查找其他依赖项
 find_package(Eigen3 REQUIRED)
@@ -34,7 +33,7 @@ include_directories(
     ${catkin_INCLUDE_DIRS}
     ${Eigen3_INCLUDE_DIRS} 
     ${PCL_INCLUDE_DIRS}
-    ${NLOPT_INCLUDE_DIRS}
+    ${NLopt_INCLUDE_DIRS}  # 使用 ${NLopt_INCLUDE_DIRS} 而不是手动设置
 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall")
@@ -45,5 +44,5 @@ add_library(bspline_opt
 
 target_link_libraries(bspline_opt
     ${catkin_LIBRARIES} 
-    ${NLOPT_LIBRARIES}
+    nlopt  # 使用 ${NLopt_LIBRARIES} 而不是手动设置
 )
