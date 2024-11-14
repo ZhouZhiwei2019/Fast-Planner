@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
 find_package(Eigen3 REQUIRED)
 find_package(PCL 1.7 REQUIRED)
+link_directories(/opt/ros/noetic/lib)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -58,9 +59,10 @@ add_executable(fast_planner_node
   src/topo_replan_fsm.cpp
   src/planner_manager.cpp
   )
-target_link_libraries(fast_planner_node 
+  target_link_libraries(fast_planner_node
   ${catkin_LIBRARIES}
-  )
+  nlopt  # 仅链接到 nlopt
+)
 
 add_executable(traj_server src/traj_server.cpp)
 target_link_libraries(traj_server ${catkin_LIBRARIES})

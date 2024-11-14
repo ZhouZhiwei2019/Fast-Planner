@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 查找NLopt库
+set(nlopt_DIR /opt/ros/noetic/lib/cmake/nlopt)
 find_package(nlopt REQUIRED)
 
 # 查找其他依赖项
@@ -26,6 +27,7 @@ catkin_package(
  LIBRARIES bspline_opt
  CATKIN_DEPENDS plan_env
 )
+link_directories(/opt/ros/noetic/lib)
 
 include_directories(
     SYSTEM 
@@ -45,4 +47,5 @@ add_library(bspline_opt
 target_link_libraries(bspline_opt
     ${catkin_LIBRARIES} 
     nlopt  # 使用 ${NLopt_LIBRARIES} 而不是手动设置
+    nlopt_cxx
 )

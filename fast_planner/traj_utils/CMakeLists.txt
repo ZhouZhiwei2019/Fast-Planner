@@ -30,6 +30,7 @@ include_directories(
 )
 
 link_directories(${PCL_LIBRARY_DIRS})
+link_directories(/opt/ros/noetic/lib)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS "-std=c++14 -Wall -g")
@@ -40,6 +41,7 @@ endif()
 add_library( traj_utils
     src/planning_visualization.cpp 
     )
-target_link_libraries( traj_utils
-    ${catkin_LIBRARIES} 
-    )  
+target_link_libraries(traj_utils
+    ${catkin_LIBRARIES}
+    nlopt  # 仅链接到 nlopt
+)
